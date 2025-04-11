@@ -18,8 +18,8 @@ conda activate courses
 
 # Install required packages
 pip install pruna
-pip install pruna[full]==0.2.0
-pip install pruna_pro==0.2.0 --extra-index-url https://prunaai.pythonanywhere.com/
+pip install pruna[full]==0.2.2
+pip install pruna_pro==0.2.2.post1 --extra-index-url https://prunaai.pythonanywhere.com/
 pip install matplotlib
 pip install jupyterlab
 # pip install notebook
