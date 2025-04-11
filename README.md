@@ -3,7 +3,7 @@
 These courses aim to provide knowledge and skills to build, compress, evaluate and deploy efficient AI models. It starts with the basics of AI and ends with advanced topics. It is composed of lectures and hands-on exercises (which can be run on a local machine or on a remote machine). It is designed for students, engineers, and researchers who want to learn about efficient AI. It is under active development. If you find it helpful, please ⭐ star this repository!
 
 ## Lectures
-The folder `lectures` contains lecture slides to give the knowledge on efficient architectures, compression, and evaluation for AI models. You can find the following topics:
+The [lectures](https://ln5.sync.com/dl/7d21bc370/gxpiqj2b-4k22jgex-x8i7zgxr-9pkajy52) contains lecture slides to give the knowledge on efficient architectures, compression, and evaluation for AI models. You can find the following topics:
 - Architectures for LLMs
 - Evaluation for LLMs
 - Compression for LLMs
