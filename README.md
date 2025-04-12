@@ -24,7 +24,7 @@ The folders `exercises` and `solutions` contains hands-on coding exercises and s
 - Search optimal LLM compression
 
 **Requirements:** 
-- While it can work with large models and powerful CPU/GPU hardware, exercises are designed to also support small models, and modest CPU/GPU hardware for better accesibility.
+- While it can work with large models and powerful CPU/GPU hardware (e.g. V100, A100), exercises are designed to also support small models, and modest CPU/GPU hardware (e.g. 1080, 2080) for better accessibility.
 - You can easily setup coding environment by running `bash setup_exercises.sh`. It is also recommended to login with your `HF_TOKEN` and define the Hugging Face cache directory to download models from Hugging Face. In particular, most exercises are based on the `pruna` package for productive exploration of efficient AI topics. If you find it helpful, please ⭐ star the repository to help others discover these resources! Further, some exercises require the `pruna_pro` package to address more advanced topics.
 
 ![Website](https://img.shields.io/badge/Pruna.ai-purple?style=flat-square)
