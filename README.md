@@ -3,7 +3,7 @@
 These courses aim to provide knowledge and skills to build, compress, evaluate and deploy efficient AI models. It starts with the basics of AI and ends with advanced topics. It is composed of lectures and hands-on exercises (which can be run on a local machine or on a remote machine). It is designed for students, engineers, and researchers who want to learn about efficient AI. It is under active development. If you find it helpful, please ⭐ star this repository!
 
 ## Lectures
-The [lectures](https://ln5.sync.com/dl/7d21bc370/gxpiqj2b-4k22jgex-x8i7zgxr-9pkajy52) contains lecture slides to give the knowledge on efficient architectures, compression, and evaluation for AI models. You can find the following topics:
+The [lectures](https://ln5.sync.com/dl/7d21bc370/gxpiqj2b-4k22jgex-x8i7zgxr-9pkajy52) contain slides to give the knowledge on efficient architectures, compression, and evaluation for AI models. You can find the following topics:
 - Architectures for LLMs
 - Evaluation for LLMs
 - Compression for LLMs
@@ -24,7 +24,7 @@ The folders `exercises` and `solutions` contains hands-on coding exercises and s
 - Search optimal LLM compression
 
 **Requirements:** 
-- While it can work with large models and powerful CPU/GPU hardware, exercises are designed to also support small models, and modest CPU/GPU hardware for better accesibility.
+- While it can work with large models and powerful CPU/GPU hardware (e.g. V100, A100), exercises are designed to also support small models, and modest CPU/GPU hardware (e.g. 1080, 2080) for better accessibility.
 - You can easily setup coding environment by running `bash setup_exercises.sh`. It is also recommended to login with your `HF_TOKEN` and define the Hugging Face cache directory to download models from Hugging Face. In particular, most exercises are based on the `pruna` package for productive exploration of efficient AI topics. If you find it helpful, please ⭐ star the repository to help others discover these resources! Further, some exercises require the `pruna_pro` package to address more advanced topics.
 
 ![Website](https://img.shields.io/badge/Pruna.ai-purple?style=flat-square)
