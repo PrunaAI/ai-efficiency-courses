@@ -62,7 +62,7 @@ Further, some exercises require the `pruna_pro` package to address more advanced
 
 - **Minimum**: Modest GPU (1080Ti, 2080Ti)
 - **Ideal**: High-end GPU (V100, A100)
-- **Note**: Exercises are optimized for accessibility with 20+ small models to work on modest setup.
+- **Note**: Exercises are optimized for accessibility with 20+ selected small models to work on modest setup.
 
 ## Community
 
