@@ -6,7 +6,6 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 
 - [📚 Lectures](#lectures) - Comprehensive slides and materials
 - [💻 Exercises](#exercises) - Hands-on coding practice
-- [📖 References](#references) - Curated resources and papers
 - [⚙️ Setup](#setup) - Environment configuration
 - [🤝 Community](#community) - Connect with other learners
 
@@ -61,9 +60,9 @@ Further, some exercises require the `pruna_pro` package to address more advanced
 
 ### Hardware Requirements
 
-- **Minimum**: Modest GPU (1080, 2080)
-- **Recommended**: High-end GPU (V100, A100)
-- **Note**: Exercises are optimized for accessibility
+- **Minimum**: Modest GPU (1080Ti, 2080Ti)
+- **Ideal**: High-end GPU (V100, A100)
+- **Note**: Exercises are optimized for accessibility with 20+ small models to work on modest setup.
 
 ## Community
 
