@@ -1,4 +1,4 @@
-# Efficient AI - Courses
+# AI Efficiency Courses
 
 A comprehensive learning path for building, compressing, evaluating, and deploying efficient AI models. From fundamentals to advanced techniques, this course combines theoretical knowledge with practical exercises. Perfect for students, engineers, and researchers looking to master efficient AI development.
 
