@@ -158,7 +158,6 @@ def main() -> int:
     Returns:
         0 on success, 1 on failure
     """
-    return None
     try:
         syncer = NotebookSyncer()
         success = syncer.sync_notebooks()
