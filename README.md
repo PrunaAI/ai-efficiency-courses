@@ -68,15 +68,36 @@ source .venv/bin/activate
 ```
 
 ### Configuration
-- **Hugging Face Integration**: Set your `HF_TOKEN` environment variable
-- **Pruna Token**: Set your `PRUNA_TOKEN` environment variable (optional)
-- **Cache Directory**: Configure cache paths for optimal storage (optional)
+
+- **Hugging Face Integration**:
+  Set your Hugging Face access token as an environment variable so you can download models and datasets.
+  ```bash
+  export HF_TOKEN=your_huggingface_token
+  ```
+  You can find or create your token at [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+
+- **Pruna Token** (optional):
+  If you want to use advanced features from the `pruna_pro` package, set your Pruna token as an environment variable:
+  ```bash
+  export PRUNA_TOKEN=your_pruna_token
+  ```
+  You can obtain a token by signing up at [https://pruna.ai](https://www.pruna.ai/pricing).
 
 ### Hardware Requirements
 
 - **Minimum**: Modest GPU (1080Ti, 2080Ti)
 - **Ideal**: High-end GPU (V100, A100)
 - **Note**: Exercises are optimized for accessibility with 20+ selected small models to work on modest setup.
+
+### 🚀 Google Colab Integration
+
+All notebooks include Google Colab buttons for free GPU access. Click the "Open in Colab" button on any notebook to get started.
+
+**Free Tier**: Tesla T4/K80/P100 GPUs, 12GB RAM, limited hours/day
+**Colab Pro ($9.99/month)**: Priority GPU access, longer runtime, 32GB RAM
+**Colab Pro+ ($49.99/month)**: A100 GPUs, maximum runtime, 52GB RAM
+
+💡 **Tip**: Use Runtime → Change runtime type → GPU for best performance
 
 ## Community
 
