@@ -114,17 +114,17 @@ If you find it helpful, please ⭐ star the repository!
 
 Located in `exercises/` and `solutions/` directories, our hands-on modules include:
 
-| Exercise | Description | Exercise Notebook | Solution Notebook |
-|----------|-------------|-------------------|-------------------|
-| **Core Exercises** | | | |
-| 🔍 Analyze LLM architectures | Study model design patterns and optimization techniques | [notebook](exercises/01-analyze_llm_architectures.ipynb) | [solution](solutions/01-analyze_llm_architectures.ipynb) |
-| 📊 Measure LLM efficiency | Evaluate model performance and resource usage | [notebook](exercises/02-measure_llm_efficiency.ipynb) | [solution](solutions/02-measure_llm_efficiency.ipynb) |
-| ⚖️ Run LLM on CPU vs GPU | Compare usage of CPU and GPU for LLM inference | [notebook](exercises/03-run_llm_cpu_vs_gpu.ipynb) | [solution](solutions/03-run_llm_cpu_vs_gpu.ipynb) |
-| 🔢 Benchmark LLM Quantization methods | Analyze impact of different quantization methods | [notebook](exercises/04-benchmark_llm_quantization_methods.ipynb) | [solution](solutions/04-benchmark_llm_quantization_methods.ipynb) |
-| **Advanced Topics** | | | |
-| 🚀 Benchmark LLM bit precision | Analyze impact of different bit precisions | [notebook](exercises/05-benchmark_llm_bits.ipynb) | [solution](solutions/05-benchmark_llm_bits.ipynb) |
-| 📈 Use data during quantization | Leverage calibration data for better quantization | [notebook](exercises/06-use_data_llm_quantization.ipynb) | [solution](solutions/06-use_data_llm_quantization.ipynb) |
-| 🎯 Finetune compressed models | Adapt quantized models for specific tasks | [notebook](exercises/07-finetune_llm.ipynb) | [solution](solutions/07-finetune_llm.ipynb) |
+| Exercise | Description | Exercise Notebook | Solution Notebook | Difficulty | Hardware |
+|----------|-------------|-------------------|-------------------|------------|----------|
+| **Core Exercises** | | | | | |
+| 🔍 Analyze LLM architectures | Study model design patterns and optimization techniques | [notebook](exercises/01-analyze_llm_architectures.ipynb) | [solution](solutions/01-analyze_llm_architectures.ipynb) | 🟢 Easy | CPU |
+| 📊 Measure LLM efficiency | Evaluate model performance and resource usage | [notebook](exercises/02-measure_llm_efficiency.ipynb) | [solution](solutions/02-measure_llm_efficiency.ipynb) | 🟢 Easy | CPU |
+| ⚖️ Run LLM on CPU vs GPU | Compare usage of CPU and GPU for LLM inference | [notebook](exercises/03-run_llm_cpu_vs_gpu.ipynb) | [solution](solutions/03-run_llm_cpu_vs_gpu.ipynb) | 🟡 Medium | CPU+GPU |
+| 🔢 Benchmark LLM Quantization methods | Analyze impact of different quantization methods | [notebook](exercises/04-benchmark_llm_quantization_methods.ipynb) | [solution](solutions/04-benchmark_llm_quantization_methods.ipynb) | 🟡 Medium | GPU |
+| **Advanced Topics** | | | | | |
+| 🚀 Benchmark LLM bit precision | Analyze impact of different bit precisions | [notebook](exercises/05-benchmark_llm_bits.ipynb) | [solution](solutions/05-benchmark_llm_bits.ipynb) | 🔴 Advanced | GPU |
+| 📈 Use data during quantization | Leverage calibration data for better quantization | [notebook](exercises/06-use_data_llm_quantization.ipynb) | [solution](solutions/06-use_data_llm_quantization.ipynb) | 🔴 Advanced | GPU |
+| 🎯 Finetune compressed models | Adapt quantized models for specific tasks | [notebook](exercises/07-finetune_llm.ipynb) | [solution](solutions/07-finetune_llm.ipynb) | 🔴 Advanced | GPU |
 
 ## Setup
 
