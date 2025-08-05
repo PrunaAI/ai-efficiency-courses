@@ -14,6 +14,7 @@ dependencies = [
     "widgetsnbextension",
     "pyarrow<20",
     "fsspec==2023.9.2",
+    "ruff>=0.12.7",
 ]
 
 [project.urls]
