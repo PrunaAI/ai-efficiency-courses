@@ -1,0 +1,26 @@
+[project]
+name = "ai-efficiency-courses"
+version = "0.1.0"
+description = "AI Efficiency Courses with Pruna"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pruna[full]==0.2.8",
+    "pruna_pro==0.2.8",
+    "matplotlib",
+    "jupyter>=1.1.1",
+    "notebook>=6.0.0",
+    "ipywidgets>=8.1.7",
+    "widgetsnbextension",
+    "pyarrow<20",
+]
+
+[project.urls]
+Repository = "https://github.com/your-org/ai-efficiency-courses"
+
+[tool.uv]
+dev-dependencies = []
+extra-index-url = [
+    "https://prunaai.pythonanywhere.com/",
+]
+index-strategy = "unsafe-best-match"
