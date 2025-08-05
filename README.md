@@ -182,6 +182,7 @@ Further, some exercises require the `pruna_pro` package to address more advanced
 | [PleIAs/Pleias-3b-Preview](https://huggingface.co/PleIAs/Pleias-3b-Preview) | 3B | 6GB | Public |
 
 > Note: 
+> - Exercises have been tested with these models but might work with models which are not listed in this table.
 > - Gated models require authentication with Hugging Face token (HF_TOKEN).
 > - Estimated memory assumes FP16 precision. Actual memory usage may vary based on implementation and overhead.
 > - Memory can be further reduced using quantization techniques covered in the exercises.
