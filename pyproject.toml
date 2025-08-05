@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "ai-efficiency-courses"
 version = "0.1.0"
@@ -18,8 +22,16 @@ dependencies = [
     "pre-commit>=3.6.0",
 ]
 
+[project.scripts]
+sync-notebooks = "scripts.sync_notebooks:main"
+add-colab-buttons = "scripts.add_colab_buttons:main"
+
 [project.urls]
-Repository = "https://github.com/your-org/ai-efficiency-courses"
+Repository = "https://github.com/PrunaAI/ai-efficiency-courses"
+
+[tool.setuptools]
+packages = ["course"]
+py-modules = ["scripts.sync_notebooks", "scripts.add_colab_buttons"]
 
 [tool.uv]
 dev-dependencies = []
