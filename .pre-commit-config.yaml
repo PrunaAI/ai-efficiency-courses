@@ -1,0 +1,35 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: debug-statements
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.7
+    hooks:
+      - id: ruff
+        args: [--fix]
+        exclude: ^exercises/
+      - id: ruff-format
+        exclude: ^exercises/
+
+  - repo: local
+    hooks:
+      # - id: sync-notebooks
+      #   name: Sync notebooks from solutions to exercises
+      #   entry: python scripts/sync_notebooks.py
+      #   language: system
+      #   files: ^solutions/.*\.ipynb$
+      #   pass_filenames: false
+
+      - id: add-colab-buttons
+        name: Add Google Colab buttons to notebooks
+        entry: python scripts/add_colab_buttons.py
+        language: system
+        files: ^(exercises|solutions)/.*\.ipynb$
+        pass_filenames: false
