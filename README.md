@@ -148,6 +148,51 @@ Further, some exercises require the `pruna_pro` package to address more advanced
 - **Ideal**: High-end GPU (V100, A100)
 - **Note**: Exercises are optimized for accessibility with 20+ selected small models to work on modest setup.
 
+### Supported Models
+
+| Model Name | Parameters | Est. Memory (FP16) | Access |
+|------------|------------|-------------------|--------|
+| [facebook/opt-125m](https://huggingface.co/facebook/opt-125m) | 125M | 250MB | Public |
+| [facebook/opt-350m](https://huggingface.co/facebook/opt-350m) | 350M | 700MB | Public |
+| [facebook/opt-1.3b](https://huggingface.co/facebook/opt-1.3b) | 1.3B | 2.6GB | Public |
+| [facebook/opt-2.7b](https://huggingface.co/facebook/opt-2.7b) | 2.7B | 5.4GB | Public |
+| [meta-llama/Llama-3.2-1B](https://huggingface.co/meta-llama/Llama-3.2-1B) | 1B | 2GB | Gated |
+| [meta-llama/Llama-3.2-1B-Instruct](https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct) | 1B | 2GB | Gated |
+| [meta-llama/Llama-3.2-3B-Instruct](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct) | 3B | 6GB | Gated |
+| [google/gemma-3-1b-it](https://huggingface.co/google/gemma-3-1b-it) | 1B | 2GB | Gated |
+| [google/gemma-3-4b-it](https://huggingface.co/google/gemma-3-4b-it) | 4B | 8GB | Gated |
+| [deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) | 1.5B | 3GB | Public |
+| [microsoft/Phi-4-mini-instruct](https://huggingface.co/microsoft/Phi-4-mini-instruct) | 350M | 700MB | Public |
+| [HuggingFaceTB/SmolLM-135M](https://huggingface.co/HuggingFaceTB/SmolLM-135M) | 135M | 270MB | Public |
+| [HuggingFaceTB/SmolLM-135M-instruct](https://huggingface.co/HuggingFaceTB/SmolLM-135M-instruct) | 135M | 270MB | Public |
+| [HuggingFaceTB/SmolLM-360M](https://huggingface.co/HuggingFaceTB/SmolLM-360M) | 360M | 720MB | Public |
+| [HuggingFaceTB/SmolLM-360M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM-360M-Instruct) | 360M | 720MB | Public |
+| [HuggingFaceTB/SmolLM-1.7B](https://huggingface.co/HuggingFaceTB/SmolLM-1.7B) | 1.7B | 3.4GB | Public |
+| [HuggingFaceTB/SmolLM-1.7B-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM-1.7B-Instruct) | 1.7B | 3.4GB | Public |
+| [HuggingFaceTB/SmolLM2-135M](https://huggingface.co/HuggingFaceTB/SmolLM2-135M) | 135M | 270MB | Public |
+| [HuggingFaceTB/SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct) | 135M | 270MB | Public |
+| [HuggingFaceTB/SmolLM2-360M](https://huggingface.co/HuggingFaceTB/SmolLM2-360M) | 360M | 720MB | Public |
+| [HuggingFaceTB/SmolLM2-360M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct) | 360M | 720MB | Public |
+| [HuggingFaceTB/SmolLM2-1.7B](https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B) | 1.7B | 3.4GB | Public |
+| [HuggingFaceTB/SmolLM2-1.7B-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct) | 1.7B | 3.4GB | Public |
+| [PleIAs/Pleias-350m-Preview](https://huggingface.co/PleIAs/Pleias-350m-Preview) | 350M | 700MB | Public |
+| [PleIAs/Pleias-Pico](https://huggingface.co/PleIAs/Pleias-Pico) | 350M | 700MB | Public |
+| [PleIAs/Pleias-1.2b-Preview](https://huggingface.co/PleIAs/Pleias-1.2b-Preview) | 1.2B | 2.4GB | Public |
+| [PleIAs/Pleias-Nano](https://huggingface.co/PleIAs/Pleias-Nano) | 1.2B | 2.4GB | Public |
+| [PleIAs/Pleias-3b-Preview](https://huggingface.co/PleIAs/Pleias-3b-Preview) | 3B | 6GB | Public |
+
+> Note: 
+> - Gated models require authentication with Hugging Face token (HF_TOKEN).
+> - Estimated memory assumes FP16 precision. Actual memory usage may vary based on implementation and overhead.
+> - Memory can be further reduced using quantization techniques covered in the exercises.
+
+
+
+
+
+
+
+
 ## Community
 
 Connect with us across platforms:
