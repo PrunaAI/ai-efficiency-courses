@@ -1,30 +1,25 @@
 #!/bin/bash
 
-# Install Miniconda
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p $HOME/miniconda3
-rm ~/miniconda3/miniconda.sh
+# Install UV if not already installed
+if ! command -v uv &> /dev/null; then
+    echo "Installing UV..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    source $HOME/.cargo/env
+fi
 
-# Initialize conda for bash shell
-source $HOME/miniconda3/bin/activate
-conda init --all
+# Initialize the project with UV
+echo "Setting up AI Efficiency Courses with UV..."
+uv python install 3.10
+uv sync
 
-# Create courses environment
-conda create -y -n courses python=3.10
+# Install pruna_pro from custom index
+echo "Installing pruna_pro from custom index..."
+uv add pruna_pro==0.2.2.post1 --index-url https://prunaai.pythonanywhere.com/simple/
 
-# Activate courses environment
-conda activate courses
+echo "Setup complete! Activate the environment with:"
+echo "source .venv/bin/activate"
 
-# Install required packages
-pip install pruna
-pip install pruna[full]==0.2.2
-pip install pruna_pro==0.2.2.post1 --extra-index-url https://prunaai.pythonanywhere.com/
-pip install matplotlib
-pip install jupyterlab
-# pip install notebook
-
-# # Setup Hugging Face cache directory
+# # Setup Hugging Face cache directory (optional)
 # CACHE_PATH=<path_to_cache>
 # export TORCH_HOME=$CACHE_PATH
 # export HF_HOME=$CACHE_PATH
@@ -34,6 +29,5 @@ pip install jupyterlab
 # mkdir -p $HF_HOME
 # export HF_TOKEN=<hf_token>
 
-
-# # Export Pruna token
+# # Export Pruna token (optional)
 # export PRUNA_TOKEN=<pruna_token>

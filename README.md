@@ -45,25 +45,60 @@ Located in `exercises/` and `solutions/` directories, our hands-on modules inclu
 
 ## Setup
 
-You can easily setup your coding environment. In particular, most exercises are based on the `pruna` package for productive exploration of efficient AI topics.
+You can easily setup your coding environment using UV, a modern Python package manager. Most exercises are based on the `pruna` package for productive exploration of efficient AI topics.
 Further, some exercises require the `pruna_pro` package to address more advanced topics.
 
-1. **Environment Setup**
-   ```bash
-   bash setup_exercises.sh
-   ```
-2. **Hugging Face Integration**
-   - Set your `HF_TOKEN`
-   - Configure cache directory
-   - Install required packages:
-     - `pruna` (core package)
-     - `pruna_pro` (advanced features)
+### Option 1: Automated Setup (Recommended)
+```bash
+bash setup_exercises.sh
+```
+
+### Option 2: Manual Setup with UV
+```bash
+# Install UV if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
+
+# Setup the project
+uv python install 3.10
+uv sync
+uv add pruna_pro==0.2.2.post1 --index-url https://prunaai.pythonanywhere.com/simple/
+
+# Activate the environment
+source .venv/bin/activate
+```
+
+### Configuration
+
+- **Hugging Face Integration**:
+  Set your Hugging Face access token as an environment variable so you can download models and datasets.
+  ```bash
+  export HF_TOKEN=your_huggingface_token
+  ```
+  You can find or create your token at [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+
+- **Pruna Token** (optional):
+  If you want to use advanced features from the `pruna_pro` package, set your Pruna token as an environment variable:
+  ```bash
+  export PRUNA_TOKEN=your_pruna_token
+  ```
+  You can obtain a token by signing up at [https://pruna.ai](https://www.pruna.ai/pricing).
 
 ### Hardware Requirements
 
 - **Minimum**: Modest GPU (1080Ti, 2080Ti)
 - **Ideal**: High-end GPU (V100, A100)
 - **Note**: Exercises are optimized for accessibility with 20+ selected small models to work on modest setup.
+
+### 🚀 Google Colab Integration
+
+All notebooks include Google Colab buttons for free GPU access. Click the "Open in Colab" button on any notebook to get started.
+
+**Free Tier**: Tesla T4/K80/P100 GPUs, 12GB RAM, limited hours/day
+**Colab Pro ($9.99/month)**: Priority GPU access, longer runtime, 32GB RAM
+**Colab Pro+ ($49.99/month)**: A100 GPUs, maximum runtime, 52GB RAM
+
+💡 **Tip**: Use Runtime → Change runtime type → GPU for best performance
 
 ## Community
 
