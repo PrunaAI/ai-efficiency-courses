@@ -44,19 +44,33 @@ Located in `exercises/` and `solutions/` directories, our hands-on modules inclu
 
 ## Setup
 
-You can easily setup your coding environment. In particular, most exercises are based on the `pruna` package for productive exploration of efficient AI topics.
+You can easily setup your coding environment using UV, a modern Python package manager. Most exercises are based on the `pruna` package for productive exploration of efficient AI topics.
 Further, some exercises require the `pruna_pro` package to address more advanced topics.
 
-1. **Environment Setup**
-   ```bash
-   bash setup_exercises.sh
-   ```
-2. **Hugging Face Integration**
-   - Set your `HF_TOKEN`
-   - Configure cache directory
-   - Install required packages:
-     - `pruna` (core package)
-     - `pruna_pro` (advanced features)
+### Option 1: Automated Setup (Recommended)
+```bash
+bash setup_exercises.sh
+```
+
+### Option 2: Manual Setup with UV
+```bash
+# Install UV if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
+
+# Setup the project
+uv python install 3.10
+uv sync
+uv add pruna_pro==0.2.2.post1 --index-url https://prunaai.pythonanywhere.com/simple/
+
+# Activate the environment
+source .venv/bin/activate
+```
+
+### Configuration
+- **Hugging Face Integration**: Set your `HF_TOKEN` environment variable
+- **Pruna Token**: Set your `PRUNA_TOKEN` environment variable (optional)
+- **Cache Directory**: Configure cache paths for optimal storage (optional)
 
 ### Hardware Requirements
 
