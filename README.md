@@ -124,7 +124,7 @@ Located in `exercises/` and `solutions/` directories, our hands-on modules inclu
 | **Advanced Topics** | | | | | |
 | 🚀 Benchmark LLM bit precision | Analyze impact of different bit precisions | [notebook](exercises/05-benchmark_llm_bits.ipynb) | [solution](solutions/05-benchmark_llm_bits.ipynb) | 🔴 | GPU |
 | 📈 Use data during quantization | Leverage calibration data for better quantization | [notebook](exercises/06-use_data_llm_quantization.ipynb) | [solution](solutions/06-use_data_llm_quantization.ipynb) | 🔴 | GPU |
-| 🎯 Finetune compressed models | Adapt quantized models for specific tasks | [notebook](exercises/07-finetune_llm.ipynb) | [solution](solutions/07-finetune_llm.ipynb) | 🔴 Advanced | GPU |
+| 🎯 Finetune compressed models | Adapt quantized models for specific tasks | [notebook](exercises/07-finetune_llm.ipynb) | [solution](solutions/07-finetune_llm.ipynb) | 🔴 | GPU |
 
 ## Setup
 
