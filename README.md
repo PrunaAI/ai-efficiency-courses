@@ -150,7 +150,7 @@ Further, some exercises require the `pruna_pro` package to address more advanced
 
 ### Supported Models
 
-| Model Name | Parameters | Est. Memory (FP16) | Access |
+| Model Name | Parameters | Est. Memory | Access |
 |------------|------------|-------------------|--------|
 | [facebook/opt-125m](https://huggingface.co/facebook/opt-125m) | 125M | 250MB | Public |
 | [facebook/opt-350m](https://huggingface.co/facebook/opt-350m) | 350M | 700MB | Public |
