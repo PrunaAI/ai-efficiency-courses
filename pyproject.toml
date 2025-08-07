@@ -20,6 +20,11 @@ dependencies = [
     "fsspec==2023.9.2",
     "ruff>=0.12.7",
     "pre-commit>=3.6.0",
+    "plotly>=6.2.0",
+    "pymupdf>=1.26.3",
+    "ipython[all]>=8.37.0",
+    "gradio-pdf>=0.0.22",
+    "pdf2image>=1.17.0",
 ]
 
 [project.scripts]
@@ -30,7 +35,7 @@ add-colab-buttons = "scripts.add_colab_buttons:main"
 Repository = "https://github.com/PrunaAI/ai-efficiency-courses"
 
 [tool.setuptools]
-packages = ["course"]
+packages = ["course", "slides"]
 py-modules = ["scripts.sync_notebooks", "scripts.add_colab_buttons"]
 
 [tool.uv]
