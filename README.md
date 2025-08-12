@@ -167,12 +167,12 @@ source .venv/bin/activate
 
 - **Google Colab Integration** (optional):
    All notebooks include Google Colab buttons for free GPU access. Click the "Open in Colab" button on any notebook to get started.
-   
-   **Free Tier**: Tesla T4/K80/P100 GPUs, 12GB RAM, limited hours/day
-   **Colab Pro ($9.99/month)**: Priority GPU access, longer runtime, 32GB RAM
-   **Colab Pro+ ($49.99/month)**: A100 GPUs, maximum runtime, 52GB RAM
 
-💡 **Tip**: Use Runtime → Change runtime type → GPU for best performance
+   - **Free Tier**: Tesla T4/K80/P100 GPUs, 12GB RAM, limited hours/day
+   - **Colab Pro ($9.99/month)**: Priority GPU access, longer runtime, 32GB RAM
+   - **Colab Pro+ ($49.99/month)**: A100 GPUs, maximum runtime, 52GB RAM
+
+   💡 **Tip**: Use Runtime → Change runtime type → GPU for best performance
 
 ### Hardware Requirements
 
