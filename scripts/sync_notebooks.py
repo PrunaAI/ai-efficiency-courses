@@ -168,7 +168,6 @@ class NotebookSyncer:
         # Track whether we're currently in a "To Complete" section
         in_to_complete_section = False
         section_count = 0
-        section_depth = 0  # Track nested sections
 
         for i, cell in enumerate(cells):
             try:
@@ -187,13 +186,25 @@ class NotebookSyncer:
                     else:
                         source_text = str(cell["source"])
 
-                # Check if this cell contains the start marker (handle variations)
-                if "### To Complete ###" in source_text:
-                    section_depth += 1
-                    if section_depth == 1:  # Only set flag for outermost section
-                        in_to_complete_section = True
-                        section_count += 1
-                        self.logger.debug(f"Found 'To Complete' marker in cell {i} (depth: {section_depth})")
+                # Check if this cell contains both markers (self-contained section)
+                has_start = "### To Complete ###" in source_text
+                has_end = "### End of To Complete ###" in source_text
+
+                if has_start and has_end:
+                    # Self-contained section - clear outputs from this cell
+                    section_count += 1
+                    self.logger.debug(f"Found self-contained 'To Complete' section in cell {i}")
+                    if "outputs" in cell:
+                        cell["outputs"] = []
+                    if "execution_count" in cell:
+                        cell["execution_count"] = None
+                    continue
+
+                # Check if this cell contains the start marker
+                if has_start:
+                    in_to_complete_section = True
+                    section_count += 1
+                    self.logger.debug(f"Found 'To Complete' marker in cell {i}")
                     # Clear outputs from the marker cell itself
                     if "outputs" in cell:
                         cell["outputs"] = []
@@ -201,12 +212,10 @@ class NotebookSyncer:
                         cell["execution_count"] = None
                     continue
 
-                # Check if this cell contains the end marker (handle variations)
-                if "### End of To Complete ###" in source_text:
-                    section_depth -= 1
-                    if section_depth == 0:  # Only clear flag when outermost section ends
-                        in_to_complete_section = False
-                        self.logger.debug(f"Found 'End of To Complete' marker in cell {i} (depth: {section_depth})")
+                # Check if this cell contains the end marker
+                if has_end:
+                    in_to_complete_section = False
+                    self.logger.debug(f"Found 'End of To Complete' marker in cell {i}")
                     # Clear outputs from the marker cell itself
                     if "outputs" in cell:
                         cell["outputs"] = []
@@ -233,9 +242,6 @@ class NotebookSyncer:
             for key in execution_keys:
                 if key in metadata:
                     del metadata[key]
-
-        if section_depth != 0:
-            self.logger.warning(f"Unmatched markers detected: section_depth = {section_depth}")
 
         self.logger.info(f"Processed {section_count} 'To Complete' sections")
         return cleaned_notebook
