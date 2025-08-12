@@ -5,10 +5,11 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 ## Table of Contents
 
 - [📋 Overview](#overview) - Course overview
-- [📚 Lectures](#lectures) - Comprehensive slides and materials
+- [📚 Lectures](#lectures) - Comprehensive materials
 - [💻 Exercises](#exercises) - Hands-on coding practice
 - [⚙️ Setup](#setup) - Environment configuration
 - [🤝 Community](#community) - Connect with other learners
+- [🗂️ Resources](#resources) - Detailed references
 
 ## Overview
 
@@ -95,9 +96,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 
 ## Lectures
 
-The lecture content is based on multiple sources (incl. papers, books, and lectures).
-You can find the main sources in the [Awesome AI efficiency](https://github.com/PrunaAI/awesome-ai-efficiency) repository.
-If you find it helpful, please ⭐ star the repository!
+The lecture content is based on multiple sources (incl. papers, books, and lectures). If you find it helpful, please ⭐ star the repository!
 
 | Topic | Description | Slides |
 |-------|-------------|--------|
@@ -128,8 +127,7 @@ Located in `exercises/` and `solutions/` directories, our hands-on modules inclu
 
 ## Setup
 
-You can easily setup your coding environment. In particular, most exercises are based on the `pruna` package for productive exploration of efficient AI topics.
-Further, some exercises require the `pruna_pro` package to address more advanced topics.
+You can easily setup your coding environment. Dependencies are specified in the `pyproject.toml`. More specifically, you can complete the exercises with the `pruna` package, and go further with the `pruna_pro`. While `pruna` enable productive exploration of efficient AI topics, `pruna_pro` package allow to address more advanced topics.
 
 1. **Environment Setup**
    ```bash
@@ -205,5 +203,20 @@ Connect with us across platforms:
 [![Discord](https://img.shields.io/badge/Discord-join_us-purple?style=flat-square)](https://discord.gg/prunaai)
 [![Hugging Face](https://img.shields.io/badge/Huggingface-models-yellow?style=flat-square)](https://huggingface.co/prunaai)
 [![Replicate](https://img.shields.io/badge/replicate-black?style=flat-square)](https://replicate.com/prunaai)
+
+## Resources
+
+You can find the main resources in the [Awesome AI efficiency](https://github.com/PrunaAI/awesome-ai-efficiency) repository. It includes complete reference including:
+- Facts 📊
+- Tools 🛠️
+- News Articles 📰
+- Reports 📈
+- Research Articles 📄
+- Blogs 📰
+- Books 📚
+- Lectures 🎓
+- People 🧑‍💻
+- Organizations 🌍
+
 
 ⭐ **Support the Project**: If you find these resources valuable, please star this repository and the [Awesome AI efficiency](https://github.com/PrunaAI/awesome-ai-efficiency) collection!
