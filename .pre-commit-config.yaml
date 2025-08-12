@@ -20,16 +20,15 @@ repos:
 
   - repo: local
     hooks:
-      # - id: sync-notebooks
-      #   name: Sync notebooks from solutions to exercises
-      #   entry: python scripts/sync_notebooks.py
-      #   language: system
-      #   files: ^solutions/.*\.ipynb$
-      #   pass_filenames: false
-
       - id: add-colab-buttons
         name: Add Google Colab buttons to notebooks
-        entry: python scripts/add_colab_buttons.py
+        entry: python3 scripts/add_colab_buttons.py
         language: system
         files: ^(exercises|solutions)/.*\.ipynb$
+        pass_filenames: false
+      - id: sync-notebooks
+        name: Sync notebooks
+        entry: python3 scripts/sync_notebooks.py
+        language: system
+        always_run: true
         pass_filenames: false
