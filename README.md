@@ -127,24 +127,59 @@ Located in `exercises/` and `solutions/` directories, our hands-on modules inclu
 
 ## Setup
 
-You can easily setup your coding environment. Dependencies are specified in the `pyproject.toml`. More specifically, you can complete the exercises with the `pruna` package, and go further with the `pruna_pro`. While `pruna` enable productive exploration of efficient AI topics, `pruna_pro` package allow to address more advanced topics.
+You can easily setup your coding environment with the options below. Dependencies are specified in the `pyproject.toml`. More specifically, you can complete the exercises with the `pruna` package, and go further with the `pruna_pro`. While `pruna` enable productive exploration of efficient AI topics, `pruna_pro` package allow to address more advanced topics.
 
-1. **Environment Setup**
-   ```bash
-   bash setup_exercises.sh
-   ```
-2. **Hugging Face Integration**
-   - Set your `HF_TOKEN`
-   - Configure cache directory
-   - Install required packages:
-     - `pruna` (core package)
-     - `pruna_pro` (advanced features)
+### Option 1: Automated Setup (Recommended)
+```bash
+bash setup_exercises.sh
+```
+
+### Option 2: Manual Setup with UV
+```bash
+# Install UV if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
+
+# Setup the project
+uv python install 3.10
+uv sync
+uv add pruna_pro==0.2.2.post1 --index-url https://prunaai.pythonanywhere.com/simple/
+
+# Activate the environment
+source .venv/bin/activate
+```
+
+### Configuration
+
+- **Hugging Face Token**:
+  Set your Hugging Face access token as an environment variable so you can download models and datasets.
+  ```bash
+  export HF_TOKEN=your_huggingface_token
+  ```
+  You can find or create your token at [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+
+- **Pruna Token** (optional):
+  If you want to use advanced features from the `pruna_pro` package, set your Pruna token as an environment variable:
+  ```bash
+  export PRUNA_TOKEN=your_pruna_token
+  ```
+  You can obtain a token by signing up at [https://pruna.ai](https://www.pruna.ai/pricing).
 
 ### Hardware Requirements
 
 - **Minimum**: Modest GPU (1080Ti, 2080Ti)
 - **Ideal**: High-end GPU (V100, A100)
 - **Note**: Exercises are optimized for accessibility with 20+ selected small models to work on modest setup.
+
+#### 🚀 Google Colab Integration
+
+All notebooks include Google Colab buttons for free GPU access. Click the "Open in Colab" button on any notebook to get started.
+
+**Free Tier**: Tesla T4/K80/P100 GPUs, 12GB RAM, limited hours/day
+**Colab Pro ($9.99/month)**: Priority GPU access, longer runtime, 32GB RAM
+**Colab Pro+ ($49.99/month)**: A100 GPUs, maximum runtime, 52GB RAM
+
+💡 **Tip**: Use Runtime → Change runtime type → GPU for best performance
 
 ### Supported Models
 
@@ -186,21 +221,15 @@ You can easily setup your coding environment. Dependencies are specified in the 
 > - Memory can be further reduced using quantization techniques covered in the exercises.
 
 
-
-
-
-
-
-
 ## Community
 
 Connect with us across platforms:
 
 [![Website](https://img.shields.io/badge/Pruna.ai-purple?style=flat-square)](https://pruna.ai)
 [![X/Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2FPrunaAI)](https://x.com/PrunaAI)
-[![Dev.to](https://img.shields.io/badge/dev-to-black?style=flat-square)](https://dev.to/prunaai)
+[![Dev.to](https://img.shields.io/badge/dev-to-black?style=flat-square)](https://dev.to/pruna-ai)
 [![Reddit](https://img.shields.io/badge/Follow-r%2FPrunaAI-orange?style=social)](https://reddit.com/r/PrunaAI)
-[![Discord](https://img.shields.io/badge/Discord-join_us-purple?style=flat-square)](https://discord.gg/prunaai)
+[![Discord](https://img.shields.io/badge/Discord-join_us-purple?style=flat-square)](https://discord.gg/JFQmtFKCjd)
 [![Hugging Face](https://img.shields.io/badge/Huggingface-models-yellow?style=flat-square)](https://huggingface.co/prunaai)
 [![Replicate](https://img.shields.io/badge/replicate-black?style=flat-square)](https://replicate.com/prunaai)
 
