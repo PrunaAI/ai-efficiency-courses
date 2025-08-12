@@ -98,7 +98,9 @@ class NotebookSyncer:
                 continue
 
         if start_markers != end_markers:
-            self.logger.warning(f"Marker mismatch: {start_markers} start markers, {end_markers} end markers")
+            self.logger.warning(
+                f"Marker mismatch: {start_markers} start markers, {end_markers} end markers"
+            )
             return False
 
         return True
@@ -133,10 +135,12 @@ class NotebookSyncer:
                 if "### End of To Complete ###" in source_text:
                     end_markers.append((i, source_text.strip()))
 
-            except Exception as e:
+            except Exception:
                 continue
 
-        self.logger.info(f"Found {len(start_markers)} start markers and {len(end_markers)} end markers")
+        self.logger.info(
+            f"Found {len(start_markers)} start markers and {len(end_markers)} end markers"
+        )
 
         if start_markers:
             self.logger.info("Start markers:")
@@ -191,9 +195,29 @@ class NotebookSyncer:
                 has_end = "### End of To Complete ###" in source_text
 
                 if has_start and has_end:
-                    # Self-contained section - clear outputs from this cell
+                    # Self-contained section - clear outputs and remove content between markers
                     section_count += 1
-                    self.logger.debug(f"Found self-contained 'To Complete' section in cell {i}")
+                    self.logger.debug(
+                        f"Found self-contained 'To Complete' section in cell {i}"
+                    )
+
+                    # Remove content between markers and the end marker itself
+                    start_pos = source_text.find("### To Complete ###")
+                    end_pos = source_text.find("### End of To Complete ###")
+
+                    if start_pos != -1 and end_pos != -1:
+                        # Keep everything before start marker, remove everything after (including end marker)
+                        before_marker = source_text[
+                            : start_pos + len("### To Complete ###")
+                        ]
+
+                        # Update the source
+                        if isinstance(cell["source"], list):
+                            cell["source"] = [before_marker]
+                        else:
+                            cell["source"] = before_marker
+
+                    # Clear outputs
                     if "outputs" in cell:
                         cell["outputs"] = []
                     if "execution_count" in cell:
@@ -201,34 +225,10 @@ class NotebookSyncer:
                     continue
 
                 # Check if this cell contains the start marker
-                if has_start:
-                    in_to_complete_section = True
-                    section_count += 1
-                    self.logger.debug(f"Found 'To Complete' marker in cell {i}")
-                    # Clear outputs from the marker cell itself
-                    if "outputs" in cell:
-                        cell["outputs"] = []
-                    if "execution_count" in cell:
-                        cell["execution_count"] = None
-                    continue
-
-                # Check if this cell contains the end marker
-                if has_end:
-                    in_to_complete_section = False
-                    self.logger.debug(f"Found 'End of To Complete' marker in cell {i}")
-                    # Clear outputs from the marker cell itself
-                    if "outputs" in cell:
-                        cell["outputs"] = []
-                    if "execution_count" in cell:
-                        cell["execution_count"] = None
-                    continue
-
-                # Only clear outputs if we're in a "To Complete" section
-                if in_to_complete_section:
-                    if "outputs" in cell:
-                        cell["outputs"] = []
-                    if "execution_count" in cell:
-                        cell["execution_count"] = None
+                if has_start and not has_end or has_end and not has_start:
+                    raise ValueError(
+                        f"Cell {i} contains 'To Complete' marker but no 'End of To Complete' marker or vice versa"
+                    )
 
             except Exception as e:
                 self.logger.warning(f"Error processing cell {i}: {e}")
@@ -295,11 +295,15 @@ class NotebookSyncer:
         """
         source_path = self.solutions_dir / notebook_name
         if not source_path.exists():
-            self.logger.error(f"Notebook {notebook_name} not found in solutions directory")
+            self.logger.error(
+                f"Notebook {notebook_name} not found in solutions directory"
+            )
             return False
 
         self.logger.info(f"Testing single notebook: {notebook_name}")
-        return self.copy_notebook_without_outputs(source_path, self.exercises_dir / notebook_name)
+        return self.copy_notebook_without_outputs(
+            source_path, self.exercises_dir / notebook_name
+        )
 
     def sync_notebooks(self) -> bool:
         """
@@ -357,8 +361,8 @@ def main() -> int:
         # Check if a specific notebook was requested for testing
         if len(sys.argv) > 1:
             notebook_name = sys.argv[1]
-            if not notebook_name.endswith('.ipynb'):
-                notebook_name += '.ipynb'
+            if not notebook_name.endswith(".ipynb"):
+                notebook_name += ".ipynb"
             success = syncer.test_single_notebook(notebook_name)
         else:
             success = syncer.sync_notebooks()
