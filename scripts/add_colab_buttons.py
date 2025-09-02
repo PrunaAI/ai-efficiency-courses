@@ -112,7 +112,7 @@ class ColabButtonAdder:
         Returns:
             Dictionary representing the git installation cell
         """
-        install_code = """# Install project directly from git repository
+        install_code = """# Install the project directly from git repository
 !uv pip install git+https://github.com/PrunaAI/ai-efficiency-courses.git"""
 
         return {
