@@ -161,19 +161,24 @@ source .venv/bin/activate
 
 - **Hugging Face Token**:
   - Set your Hugging Face access token as an environment variable so you can download models and datasets.
+
     ```bash
     export HF_TOKEN=your_huggingface_token
     ```
-  You can find or create your token at [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). 
+
+  You can find or create your token at [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
   - Do not forget to login to hf and accept model terms if you want if you want to access to gated models.
+
     ```bash
     hf auth login --token $HF_TOKEN --add-to-git-credential
     ```
+
   - Loading models can take some space. We recommend to update your cache directory for the downloaded models to not fill disk:
+
     ```bash
     export CACHE_PATH="<path_to_cache>"
     export TORCH_HOME="$CACHE_PATH"
-    export HF_HOME="$CACHE_PATH" 
+    export HF_HOME="$CACHE_PATH"
     export HUGGINGFACE_HUB_CACHE="$CACHE_PATH"
     export HUGGINGFACE_ASSETS_CACHE="$CACHE_PATH"
     export TRANSFORMERS_CACHE="$CACHE_PATH"
@@ -191,9 +196,9 @@ source .venv/bin/activate
 - **Google Colab Integration** (optional):
    All notebooks include Google Colab buttons for free GPU access. Click the "Open in Colab" button on any notebook to get started.
 
-   - **Free Tier**: Tesla T4/K80/P100 GPUs, 12GB RAM, limited hours/day
-   - **Colab Pro ($9.99/month)**: Priority GPU access, longer runtime, 32GB RAM
-   - **Colab Pro+ ($49.99/month)**: A100 GPUs, maximum runtime, 52GB RAM
+  - **Free Tier**: Tesla T4/K80/P100 GPUs, 12GB RAM, limited hours/day
+  - **Colab Pro ($9.99/month)**: Priority GPU access, longer runtime, 32GB RAM
+  - **Colab Pro+ ($49.99/month)**: A100 GPUs, maximum runtime, 52GB RAM
 
    💡 **Tip**: Use Runtime → Change runtime type → GPU for best performance
 
@@ -236,12 +241,12 @@ source .venv/bin/activate
 | [PleIAs/Pleias-Nano](https://huggingface.co/PleIAs/Pleias-Nano) | 1.2B | 2.4GB | Public |
 | [PleIAs/Pleias-3b-Preview](https://huggingface.co/PleIAs/Pleias-3b-Preview) | 3B | 6GB | Public |
 
-> Note: 
+> Note:
+>
 > - Exercises have been tested with these models but might work with models which are not listed in this table.
 > - Gated models require authentication with Hugging Face token (HF_TOKEN).
 > - Estimated memory assumes FP16 precision. Actual memory usage may vary based on implementation and overhead.
 > - Memory can be further reduced using quantization techniques covered in the exercises.
-
 
 ## Community
 
@@ -257,7 +262,7 @@ Connect with us across platforms:
 
 ## Resources
 
-You can find the main resources in the [Awesome AI efficiency](https://github.com/PrunaAI/awesome-ai-efficiency) repository. It includes complete reference including:
+You can find the main resources in the [Awesome AI efficiency](https://github.com/PrunaAI/awesome-ai-efficiency) repository. It provides a complete reference including:
 
 - Facts 📊
 - Tools 🛠️
