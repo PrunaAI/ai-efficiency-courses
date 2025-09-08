@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 from typing import Dict, List, Optional
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -40,7 +42,6 @@ def create_single_plot(
 
 
 def create_multiple_plots(
-    self,
     data_dicts: List[Dict[str, float]],
     x_label: str,
     y_label: str,
@@ -149,4 +150,104 @@ def plot_pareto_front(results, metric1_name, metric2_name):
     plt.title(f"Pareto Front: {metric1_name} vs {metric2_name}")
     plt.grid(True, linestyle="--", alpha=0.7)
 
+    plt.show()
+
+def create_pareto_front(metric1_results: Dict[str, float], metric2_results: Dict[str, float], metric1_name: str, metric2_name: str) -> None:
+    """
+    Plot pareto front comparing two metrics across models.
+
+    Args:
+        metric1_results: Results dictionary for first metric
+        metric2_results: Results dictionary for second metric
+        metric1_name: Name of first metric to display
+        metric2_name: Name of second metric to display
+    """
+    # Extract values for each model
+    models = []
+    metric1_values = []
+    metric2_values = []
+
+    for model_name in metric1_results.keys():
+        if model_name in metric1_results and model_name in metric2_results:
+            models.append(model_name)
+            metric1_values.append(
+                [
+                    metric
+                    for metric in metric1_results[model_name]
+                    if metric.name == metric1_name
+                ][0].result
+            )
+            metric2_values.append(
+                [
+                    metric
+                    for metric in metric2_results[model_name]
+                    if metric.name == metric2_name
+                ][0].result
+            )
+        else:
+            print(f"{model_name} missed evaluation.")
+
+    # Create scatter plot
+    plt.figure(figsize=(10, 6))
+    print(metric2_values)
+    plt.scatter(metric1_values, metric2_values)
+
+    # Add labels for each point
+    for i, model in enumerate(models):
+        plt.annotate(model, (metric1_values[i], metric2_values[i]))
+
+    plt.xlabel(metric1_name)
+    plt.ylabel(metric2_name)
+    plt.title(f"Pareto Front: {metric1_name} vs {metric2_name}")
+    plt.grid(True)
+    plt.show()
+
+
+def create_comparison_plots(evaluation_results):
+    """
+    Plot evaluation metrics for different model configurations.
+
+    Args:
+        evaluation_results (dict): Dictionary containing evaluation metrics for each model configuration
+    """
+    # Get metrics from first result (assuming all configs have same metrics)
+    first_result = next(iter(evaluation_results.values()))
+    metrics = [
+        key
+        for key in first_result.keys()
+        if isinstance(first_result[key], (int, float))
+    ]
+    data = {}
+
+    for metric in metrics:
+        data[metric] = [
+            evaluation_results[model][metric] for model in evaluation_results
+        ]
+
+    # Calculate number of rows and columns for subplots
+    n_metrics = len(metrics)
+    n_cols = 3  # Display 3 plots per row
+    n_rows = (
+        n_metrics + n_cols - 1
+    ) // n_cols  # Ceiling division to get number of rows needed
+
+    # Create figure with subplots
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 5 * n_rows))
+    fig.suptitle("Comparison of Models with Different Bit Precision", y=1.02)
+
+    # Flatten axes array to make iteration easier
+    axes = axes.flatten()
+
+    # Plot each metric
+    for idx, (metric, values) in enumerate(data.items()):
+        ax = axes[idx]
+        ax.bar(list(evaluation_results.keys()), values)
+        ax.set_ylabel(metric)
+        ax.tick_params(axis="x", rotation=45)
+
+    # Hide empty subplots if any
+    for idx in range(len(metrics), len(axes)):
+        axes[idx].set_visible(False)
+
+    plt.tight_layout()
     plt.show()
