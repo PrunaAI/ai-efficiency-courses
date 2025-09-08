@@ -23,38 +23,17 @@ def evaluate_model(
     dataset: Union[str, PrunaDataModule] = None,
 ):
     """
-    Evaluate multiple models using the specified metrics.
+    Evaluate a model using the specified metrics.
 
     Args:
-        model_id_or_pruna_model (str): models to evaluate
+        model_id_or_pruna_model (str): model to evaluate
         tokenizer_id_or_tokenizer (str): tokenizer to use to process data
         metrics (list): List of metric instances to compute
         dataset (str | PrunaDataModule): Dataset to use for evaluation
 
     Returns:
-        dict: Dictionary mapping model IDs to their evaluation results
+        list: List of metric results
     """
-    results = {}
-
-    if metrics is None or metrics == []:
-        metrics = [
-            TotalTimeMetric(
-                n_iterations=100,
-                n_warmup_iterations=10,
-                device="cuda" if torch.cuda.is_available() else "cpu",
-                timing_type="sync",
-            ),
-            InferenceMemoryMetric(),
-            EnergyConsumedMetric(
-                n_iterations=100, n_warmup_iterations=10, device="cuda"
-            ),
-            TotalMACsMetric(),
-            TotalParamsMetric(),
-            TorchMetricWrapper(metric_name="perplexity", call_type="single"),
-        ]
-
-    device = metrics[0].device
-
     if dataset is None:
         dataset = "WikiText"
 
@@ -70,11 +49,13 @@ def evaluate_model(
             else:
                 tokenizer = tokenizer_id_or_tokenizer
         wrapped_model = model_id_or_pruna_model
-        wrapped_model.move_to_device(device)
         model_id = underlying_model.name_or_path
+        device = wrapped_model.device
     else:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         model = AutoModelForCausalLM.from_pretrained(
-            model_id_or_pruna_model, torch_dtype="auto"
+            model_id_or_pruna_model,
+            torch_dtype="auto",
         )
         model = model.to(device)
         tokenizer_id_or_tokenizer = tokenizer_id_or_tokenizer or model_id_or_pruna_model
@@ -87,6 +68,23 @@ def evaluate_model(
             smash_config=SmashConfig(device=device),
         )
         model_id = model_id_or_pruna_model
+
+    if metrics is None or metrics == []:
+        metrics = [
+            TotalTimeMetric(
+                n_iterations=100,
+                n_warmup_iterations=10,
+                device=device,
+                timing_type="sync",
+            ),
+            InferenceMemoryMetric(),
+            EnergyConsumedMetric(
+                n_iterations=100, n_warmup_iterations=10, device=device
+            ),
+            TotalMACsMetric(),
+            TotalParamsMetric(),
+            TorchMetricWrapper(metric_name="perplexity", call_type="single"),
+        ]
 
     # Create task and evaluation agent
     if isinstance(dataset, str):
@@ -102,7 +100,6 @@ def evaluate_model(
 
     # Run evaluation
     model_results = eval_agent.evaluate(wrapped_model)
-    results[model_id] = model_results
 
     # Cleanup
     try:
@@ -112,4 +109,4 @@ def evaluate_model(
     except Exception:
         pass
 
-    return results
+    return model_results
