@@ -47,7 +47,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 |------------------------------|--|
 | 📊 [Slides](slides/02-compress_language_models.pdf) | Learn about model compression techniques |
 | 🎥 [Video](https://www.youtube.com) | Coming soon |
-| 💻 [Exercise](exercises/03-run_llm_cpu_vs_gpu.ipynb) | Run LLM on CPU vs GPU |
+| 💻 [Exercise](exercises/02-run_llm_cpu_vs_gpu.ipynb) | Run LLM on CPU vs GPU |
 
 🎯 Learning Outcomes: In this chapter, you will learn about the motivations and have an overview of model compression.
 
@@ -61,7 +61,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 |-----------------------------|--|
 | 📊 [Slides](slides/03-evalaute_language_models.pdf) | Learn how to evaluate LLM efficiency |
 | 🎥 [Video](https://www.youtube.com) | Coming soon |
-| 💻 [Exercise](exercises/02-measure_llm_efficiency.ipynb) | Measure LLM efficiency |
+| 💻 [Exercise](exercises/03-measure_llm_efficiency.ipynb) | Measure LLM efficiency |
 
 🎯 Learning Outcomes: In this chapter, you will learn how to evaluate the different efficiency aspects of language models.
 
@@ -274,6 +274,5 @@ You can find the main resources in the [Awesome AI efficiency](https://github.co
 - Lectures 🎓
 - People 🧑‍💻
 - Organizations 🌍
-
 
 ⭐ **Support the Project**: If you find these resources valuable, please star this repository and the [Awesome AI efficiency](https://github.com/PrunaAI/awesome-ai-efficiency) collection!
