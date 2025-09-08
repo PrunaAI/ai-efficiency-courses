@@ -6,7 +6,7 @@ In this section, we will present you four different projects with a central them
 
 Before you start, check the following pointers:
 
-- The challenges are **unsupervised**. So, we are not providing you with an official solution. You are free to experiment, explore and be as creative as you want. The is no right or wrong way to complete the challenge.
+- The challenges are **unsupervised**. So, we are not providing you with an official solution. You are free to experiment, explore and be as creative as you want. There is no right or wrong way to complete the challenge.
 
 - We recommend you to **select a challenge you are genuinely interested in**. If you are unsure where to begin, check the provided tools and resources. You can start with the easiest level first and then develop the more advanced features.
 
@@ -76,10 +76,10 @@ In this case, your task will be to build an automated synthetic data pipeline wi
 
 #### Example Use Cases
 
-Why stucking in data scarcity when you can generate exactly what you need? Take the control and see what you can achieve:
+Why stay stuck in data scarcity when you can generate exactly what you need? Take control and see what you can achieve:
 
 - Generate data for low-resource languages or niche domains lacking data.
-- Create images of object in various conditions and angles for object detection.
+- Create images of objects under various conditions and from multipleangles for object detection.
 - Generate news articles for a fake news detection model.
 
 ### 3. **Deploy an AI Model on a Consumer GPU**
