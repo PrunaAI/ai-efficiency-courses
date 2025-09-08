@@ -20,6 +20,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | 📊 [Slides](slides/00-introduction.pdf) | Introduction to the course concepts |
 
 🎯 Learning Outcomes:
+
 - How does the course work?
 - Who is target audience of the course?
 - What are the references for the course?
@@ -33,6 +34,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | 💻 [Exercise](exercises/01-analyze_llm_architectures.ipynb) | Analyze LLM architectures |
 
 🎯 Learning Outcomes: In this chapter, you will learn what are the building blocks, variations, and recent advancements on language models.
+
 - Foundations of language models: tokens, embeddings,...
 - Autoregressive language models: transformer, (flash, multi-head, paged) attention, KV cache,...
 - State space language models: continuous, recursive, convolution,...
@@ -48,6 +50,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | 💻 [Exercise](exercises/03-run_llm_cpu_vs_gpu.ipynb) | Run LLM on CPU vs GPU |
 
 🎯 Learning Outcomes: In this chapter, you will learn about the motivations and have an overview of model compression.
+
 - Why do we need efficient models? Money, time, memory, Energy/CO2,...
 - How to compress models? Quantization, pruning, distillation, compilation,..
 - How do compression methdos help efficiency? memory reduction, latency reduction,...
@@ -61,6 +64,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | 💻 [Exercise](exercises/02-measure_llm_efficiency.ipynb) | Measure LLM efficiency |
 
 🎯 Learning Outcomes: In this chapter, you will learn how to evaluate the different efficiency aspects of language models.
+
 - Quality evaluation: perplexity, accuracy,...
 - Memory evaluation: #Parameters/#Activations, disk/inference/training memory, scaling laws,...
 - Compute evaluation: MAC, FLOP, OP, scaling laws...
@@ -72,11 +76,12 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 |--------------------------------|--|
 | 📊 [Slides](slides/04-quantize_language_models.pdf) | Learn about model quantization methods |
 | 🎥 [Video](https://www.youtube.com) | Coming soon |
-| 💻 [Exercise 1](exercises/03-run_llm_cpu_vs_gpu.ipynb) | Run LLM on CPU vs GPU |
+| 💻 [Exercise 1](exercises/04-benchmark_llm_quantization_methods.ipynb) | Benchmark LLM Quantization methods |
 | 💻 [Exercise 2](exercises/05-benchmark_llm_bits.ipynb) | Benchmark LLM bit precision |
 | 💻 [Exercise 3](exercises/06-use_data_llm_quantization.ipynb) | Use data during quantization |
 
 🎯 Learning Outcomes: In this chapter, you will learn how to quantize models from basic to advanced quantization methods.
+
 - Foundations of quantization: data types, quantization procedure, static/dynamic, linear/codebook, tensor/channel/group,...
 - Advancements on quantization: post-training/quantization-aware training, outliers handling, iteratives methods, usage of data,...
 - Overview of SOTA quantization: GPTQ, AWQ, HQQ, AQLM, Higgs, Quanto,...
@@ -90,6 +95,7 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | 💻 [Exercise](exercises/07-finetune_llm.ipynb) | Finetune compressed models |
 
 🎯 Learning Outcomes: In this chapter, you will learn how to finetune models to improve or recover performance.
+
 - Foundations of finetuning: finetuning procedure,...
 - Advancements on finetuning: finetuning of all parameters, new parameters, selected parameters, quantized parameters,...
 - Overview of SOTA finetuning: LoRA, QLoRA, Perp, P-tuing, DiffPruning,...
@@ -103,7 +109,7 @@ The lecture content is based on multiple sources (incl. papers, books, and lectu
 | Introduction | Introduction to efficient AI | [slides](slides/00-introduction.pdf) |
 | Architectures for LLMs | Model design and optimization | [slides](slides/01-language_model_architectures.pdf) |
 | Evaluation for LLMs | Performance metrics and analysis | [slides](slides/02-compress_language_models.pdf) |
-| Compression for LLMs | Model size reduction techniques | [slides](slides/03-evalaute_language_models.pdf) |
+| Compression for LLMs | Model size reduction techniques | [slides](slides/03-evaluate_language_models.pdf) |
 | Quantization for LLMs | Precision optimization | [slides](slides/04-quantize_language_models.pdf) |
 | Finetuning for LLMs | Model adaptation strategies | [slides](slides/05-finetuning_for_llms.pdf) |
 
@@ -130,11 +136,13 @@ Located in `exercises/` and `solutions/` directories, our hands-on modules inclu
 You can easily setup your coding environment with the options below. Dependencies are specified in the `pyproject.toml`. More specifically, you can complete the exercises with the `pruna` package, and go further with the `pruna_pro`. While `pruna` enable productive exploration of efficient AI topics, `pruna_pro` package allow to address more advanced topics.
 
 ### Option 1: Automated Setup (Recommended)
+
 ```bash
 bash setup_exercises.sh
 ```
 
 ### Option 2: Manual Setup with UV
+
 ```bash
 # Install UV if not already installed
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -173,9 +181,11 @@ source .venv/bin/activate
 
 - **Pruna Token** (optional):
   If you want to use advanced features from the `pruna_pro` package, set your Pruna token as an environment variable:
+
   ```bash
   export PRUNA_TOKEN=your_pruna_token
   ```
+
   You can obtain a token by signing up at [https://pruna.ai](https://www.pruna.ai/pricing).
 
 - **Google Colab Integration** (optional):
@@ -248,6 +258,7 @@ Connect with us across platforms:
 ## Resources
 
 You can find the main resources in the [Awesome AI efficiency](https://github.com/PrunaAI/awesome-ai-efficiency) repository. It includes complete reference including:
+
 - Facts 📊
 - Tools 🛠️
 - News Articles 📰
