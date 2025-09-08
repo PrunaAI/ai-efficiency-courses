@@ -160,13 +160,24 @@ source .venv/bin/activate
 ### Configuration
 
 - **Hugging Face Token**:
-  Set your Hugging Face access token as an environment variable so you can download models and datasets.
-
-  ```bash
-  export HF_TOKEN=your_huggingface_token
-  ```
-
-  You can find or create your token at [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens).
+  - Set your Hugging Face access token as an environment variable so you can download models and datasets.
+    ```bash
+    export HF_TOKEN=your_huggingface_token
+    ```
+  You can find or create your token at [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens). 
+  - Do not forget to login to hf and accept model terms if you want if you want to access to gated models.
+    ```bash
+    hf auth login --token $HF_TOKEN --add-to-git-credential
+    ```
+  - Loading models can take some space. We recommend to update your cache directory for the downloaded models to not fill disk:
+    ```bash
+    export CACHE_PATH="<path_to_cache>"
+    export TORCH_HOME="$CACHE_PATH"
+    export HF_HOME="$CACHE_PATH" 
+    export HUGGINGFACE_HUB_CACHE="$CACHE_PATH"
+    export HUGGINGFACE_ASSETS_CACHE="$CACHE_PATH"
+    export TRANSFORMERS_CACHE="$CACHE_PATH"
+    ```
 
 - **Pruna Token** (optional):
   If you want to use advanced features from the `pruna_pro` package, set your Pruna token as an environment variable:
