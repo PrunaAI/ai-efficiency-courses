@@ -13,6 +13,7 @@ from course.models import (
 )
 from course.slides import show_slides
 from course.plots import create_single_plot, create_multiple_plots
+from course.evaluate import evaluate_model
 
 __all__ = [
     "SMALL_MODEL_IDS",
@@ -22,4 +23,5 @@ __all__ = [
     "show_slides",
     "create_single_plot",
     "create_multiple_plots",
+    "evaluate_model",
 ]

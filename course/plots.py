@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from typing import Dict, List, Optional
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import matplotlib.pyplot as plt
 
 
 def create_single_plot(
@@ -110,6 +111,46 @@ def create_multiple_plots(
         raise RuntimeError(
             f"Failed to create raster plot with data_dicts={data_dicts}, x_label={x_label}, y_label={y_label}, titles={titles}, n_cols={n_cols}"
         ) from e
+
+
+def plot_pareto_front(results, metric1_name, metric2_name):
+    """
+    Plot a pareto front comparing two metrics across different quantization methods.
+
+    Args:
+        results (dict): Dictionary mapping quantizer names to their evaluation results
+        metric1_name (str): Name of the first metric to plot on x-axis
+        metric2_name (str): Name of the second metric to plot on y-axis
+
+    Creates a scatter plot showing the tradeoff between the two metrics for each quantizer,
+    with points labeled by quantizer name. Includes a grid and appropriate axis labels.
+    """
+    # Extract metrics for each quantizer
+    quantizers = []
+    metric1_values = []
+    metric2_values = []
+
+    for quantizer, result in results.items():
+        if result is not None and metric1_name in result and metric2_name in result:
+            quantizers.append(quantizer)
+            metric1_values.append(result[metric1_name])
+            metric2_values.append(result[metric2_name])
+
+    plt.figure(figsize=(10, 6))
+    plt.scatter(metric1_values, metric2_values)
+    for i, quantizer in enumerate(quantizers):
+        plt.annotate(
+            quantizer,
+            (metric1_values[i], metric2_values[i]),
+            xytext=(5, 5),
+            textcoords="offset points",
+        )
+    plt.xlabel(metric1_name)
+    plt.ylabel(metric2_name)
+    plt.title(f"Pareto Front: {metric1_name} vs {metric2_name}")
+    plt.grid(True, linestyle="--", alpha=0.7)
+
+    plt.show()
 
 def create_pareto_front(metric1_results: Dict[str, float], metric2_results: Dict[str, float], metric1_name: str, metric2_name: str) -> None:
     """
