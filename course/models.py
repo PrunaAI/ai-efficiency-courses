@@ -1,5 +1,7 @@
 # Small, medium, and large model groups for AI efficiency courses
 from typing import List
+import torch
+import gc
 
 SMALL_MODEL_IDS: List[str] = [
     "facebook/opt-125m",
@@ -34,3 +36,16 @@ LARGE_MODEL_IDS: List[str] = [
 
 # Optionally, for convenience, you can provide a combined list:
 ALL_MODEL_IDS: List[str] = SMALL_MODEL_IDS + MEDIUM_MODEL_IDS + LARGE_MODEL_IDS
+
+def delete(*objects):
+    """Delete objects from memory and clear CUDA cache.
+    
+    Args:
+        *objects: Variable number of objects to delete (e.g., models, tokenizers)
+    """
+    for obj in objects:
+        del obj
+    torch.cuda.empty_cache()
+    gc.collect()
+
+
