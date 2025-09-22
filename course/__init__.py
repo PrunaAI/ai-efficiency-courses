@@ -12,8 +12,8 @@ from course.models import (
     ALL_MODEL_IDS,
 )
 from course.slides import show_slides
-from course.plots import create_single_plot, create_multiple_plots
-from course.evaluate import evaluate_model
+from course.plots import create_single_plot, create_multiple_plots, create_pareto_front, create_comparison_plots
+from course.evaluate import evaluate, evaluate_configs
 
 __all__ = [
     "SMALL_MODEL_IDS",
@@ -23,5 +23,8 @@ __all__ = [
     "show_slides",
     "create_single_plot",
     "create_multiple_plots",
-    "evaluate_model",
+    "create_pareto_front",
+    "evaluate",
+    "evaluate_configs",
+    "create_comparison_plots",
 ]
