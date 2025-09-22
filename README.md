@@ -181,7 +181,6 @@ source .venv/bin/activate
     export HF_HOME="$CACHE_PATH"
     export HUGGINGFACE_HUB_CACHE="$CACHE_PATH"
     export HUGGINGFACE_ASSETS_CACHE="$CACHE_PATH"
-    export TRANSFORMERS_CACHE="$CACHE_PATH"
     ```
 
 - **Pruna Token** (optional):
