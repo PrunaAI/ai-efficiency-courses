@@ -1,9 +1,7 @@
 # Small, medium, and large model groups for AI efficiency courses
 from typing import List
-import gc
 import os
 import shutil
-import torch
 
 
 SMALL_MODEL_IDS: List[str] = [

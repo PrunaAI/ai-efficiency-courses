@@ -10,6 +10,7 @@ from course.models import (
     MEDIUM_MODEL_IDS,
     LARGE_MODEL_IDS,
     ALL_MODEL_IDS,
+    clear_cache,
 )
 from course.slides import show_slides
 from course.plots import create_single_plot, create_multiple_plots, create_pareto_front, create_comparison_plots
@@ -27,4 +28,5 @@ __all__ = [
     "evaluate",
     "evaluate_configs",
     "create_comparison_plots",
+    "clear_cache",
 ]

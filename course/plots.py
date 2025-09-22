@@ -113,93 +113,71 @@ def create_multiple_plots(
         ) from e
 
 
-def plot_pareto_front(results, metric1_name, metric2_name):
+import matplotlib.pyplot as plt
+from typing import Dict, Any, List
+
+def create_pareto_front(
+    results: Dict[str, Any],
+    metric1_name: str,
+    metric2_name: str,
+    results2: Dict[str, List[Any]] = None,
+) -> None:
     """
-    Plot a pareto front comparing two metrics across different quantization methods.
+    Plot a Pareto front comparing two metrics across models/quantizers.
+
+    This function supports two input formats:
+    1. results = {model: {metric1_name: value, metric2_name: value}}
+    2. results + results2 where each is {model: [metric_objects]} with
+       metric_objects having `.name` and `.result`.
 
     Args:
-        results (dict): Dictionary mapping quantizer names to their evaluation results
-        metric1_name (str): Name of the first metric to plot on x-axis
-        metric2_name (str): Name of the second metric to plot on y-axis
-
-    Creates a scatter plot showing the tradeoff between the two metrics for each quantizer,
-    with points labeled by quantizer name. Includes a grid and appropriate axis labels.
+        results: Dictionary of results for the first format OR metric1 results (second format).
+        metric1_name: Name of the first metric to plot on x-axis.
+        metric2_name: Name of the second metric to plot on y-axis.
+        results2: (Optional) Dictionary of results for the second metric in the second format.
     """
-    # Extract metrics for each quantizer
-    quantizers = []
+    labels = []
     metric1_values = []
     metric2_values = []
 
-    for quantizer, result in results.items():
-        if result is not None and metric1_name in result and metric2_name in result:
-            quantizers.append(quantizer)
-            metric1_values.append(result[metric1_name])
-            metric2_values.append(result[metric2_name])
+    if results2 is None:
+        # Format 1: results[model][metric_name] = value
+        for model, metrics in results.items():
+            if metrics is not None and metric1_name in metrics and metric2_name in metrics:
+                labels.append(model)
+                metric1_values.append(metrics[metric1_name])
+                metric2_values.append(metrics[metric2_name])
+    else:
+        # Format 2: results[model] = [metric objects with .name and .result]
+        for model_name in results.keys():
+            if model_name in results and model_name in results2:
+                labels.append(model_name)
+                try:
+                    metric1_val = [m.result for m in results[model_name] if m.name == metric1_name][0]
+                    metric2_val = [m.result for m in results2[model_name] if m.name == metric2_name][0]
+                    metric1_values.append(metric1_val)
+                    metric2_values.append(metric2_val)
+                except IndexError:
+                    print(f"{model_name} missing one of the metrics.")
+            else:
+                print(f"{model_name} missed evaluation.")
 
+    # Plot
     plt.figure(figsize=(10, 6))
     plt.scatter(metric1_values, metric2_values)
-    for i, quantizer in enumerate(quantizers):
+
+    for i, label in enumerate(labels):
         plt.annotate(
-            quantizer,
+            label,
             (metric1_values[i], metric2_values[i]),
             xytext=(5, 5),
             textcoords="offset points",
         )
+
     plt.xlabel(metric1_name)
     plt.ylabel(metric2_name)
     plt.title(f"Pareto Front: {metric1_name} vs {metric2_name}")
     plt.grid(True, linestyle="--", alpha=0.7)
-
-    plt.show()
-
-def create_pareto_front(metric1_results: Dict[str, float], metric2_results: Dict[str, float], metric1_name: str, metric2_name: str) -> None:
-    """
-    Plot pareto front comparing two metrics across models.
-
-    Args:
-        metric1_results: Results dictionary for first metric
-        metric2_results: Results dictionary for second metric
-        metric1_name: Name of first metric to display
-        metric2_name: Name of second metric to display
-    """
-    # Extract values for each model
-    models = []
-    metric1_values = []
-    metric2_values = []
-
-    for model_name in metric1_results.keys():
-        if model_name in metric1_results and model_name in metric2_results:
-            models.append(model_name)
-            metric1_values.append(
-                [
-                    metric
-                    for metric in metric1_results[model_name]
-                    if metric.name == metric1_name
-                ][0].result
-            )
-            metric2_values.append(
-                [
-                    metric
-                    for metric in metric2_results[model_name]
-                    if metric.name == metric2_name
-                ][0].result
-            )
-        else:
-            print(f"{model_name} missed evaluation.")
-
-    # Create scatter plot
-    plt.figure(figsize=(10, 6))
-    print(metric2_values)
-    plt.scatter(metric1_values, metric2_values)
-
-    # Add labels for each point
-    for i, model in enumerate(models):
-        plt.annotate(model, (metric1_values[i], metric2_values[i]))
-
-    plt.xlabel(metric1_name)
-    plt.ylabel(metric2_name)
-    plt.title(f"Pareto Front: {metric1_name} vs {metric2_name}")
-    plt.grid(True)
     plt.show()
 
 
@@ -251,3 +229,93 @@ def create_comparison_plots(evaluation_results):
 
     plt.tight_layout()
     plt.show()
+
+
+# def plot_pareto_front(results, metric1_name, metric2_name):
+#     """
+#     Plot a pareto front comparing two metrics across different quantization methods.
+
+#     Args:
+#         results (dict): Dictionary mapping quantizer names to their evaluation results
+#         metric1_name (str): Name of the first metric to plot on x-axis
+#         metric2_name (str): Name of the second metric to plot on y-axis
+
+#     Creates a scatter plot showing the tradeoff between the two metrics for each quantizer,
+#     with points labeled by quantizer name. Includes a grid and appropriate axis labels.
+#     """
+#     # Extract metrics for each quantizer
+#     quantizers = []
+#     metric1_values = []
+#     metric2_values = []
+
+#     for quantizer, result in results.items():
+#         if result is not None and metric1_name in result and metric2_name in result:
+#             quantizers.append(quantizer)
+#             metric1_values.append(result[metric1_name])
+#             metric2_values.append(result[metric2_name])
+
+#     plt.figure(figsize=(10, 6))
+#     plt.scatter(metric1_values, metric2_values)
+#     for i, quantizer in enumerate(quantizers):
+#         plt.annotate(
+#             quantizer,
+#             (metric1_values[i], metric2_values[i]),
+#             xytext=(5, 5),
+#             textcoords="offset points",
+#         )
+#     plt.xlabel(metric1_name)
+#     plt.ylabel(metric2_name)
+#     plt.title(f"Pareto Front: {metric1_name} vs {metric2_name}")
+#     plt.grid(True, linestyle="--", alpha=0.7)
+
+#     plt.show()
+
+# def create_pareto_front(metric1_results: Dict[str, float], metric2_results: Dict[str, float], metric1_name: str, metric2_name: str) -> None:
+#     """
+#     Plot pareto front comparing two metrics across models.
+
+#     Args:
+#         metric1_results: Results dictionary for first metric
+#         metric2_results: Results dictionary for second metric
+#         metric1_name: Name of first metric to display
+#         metric2_name: Name of second metric to display
+#     """
+#     # Extract values for each model
+#     models = []
+#     metric1_values = []
+#     metric2_values = []
+
+#     for model_name in metric1_results.keys():
+#         if model_name in metric1_results and model_name in metric2_results:
+#             models.append(model_name)
+#             metric1_values.append(
+#                 [
+#                     metric
+#                     for metric in metric1_results[model_name]
+#                     if metric.name == metric1_name
+#                 ][0].result
+#             )
+#             metric2_values.append(
+#                 [
+#                     metric
+#                     for metric in metric2_results[model_name]
+#                     if metric.name == metric2_name
+#                 ][0].result
+#             )
+#         else:
+#             print(f"{model_name} missed evaluation.")
+
+#     # Create scatter plot
+#     plt.figure(figsize=(10, 6))
+#     print(metric2_values)
+#     plt.scatter(metric1_values, metric2_values)
+
+#     # Add labels for each point
+#     for i, model in enumerate(models):
+#         plt.annotate(model, (metric1_values[i], metric2_values[i]))
+
+#     plt.xlabel(metric1_name)
+#     plt.ylabel(metric2_name)
+#     plt.title(f"Pareto Front: {metric1_name} vs {metric2_name}")
+#     plt.grid(True)
+#     plt.show()
