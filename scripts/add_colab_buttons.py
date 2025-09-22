@@ -92,7 +92,6 @@ class ColabButtonAdder:
                             'os.environ["HF_HOME"] = CACHE_PATH',
                             'os.environ["HUGGINGFACE_HUB_CACHE"] = CACHE_PATH',
                             'os.environ["HUGGINGFACE_ASSETS_CACHE"] = CACHE_PATH',
-                            'os.environ["TRANSFORMERS_CACHE"] = CACHE_PATH',
                         ]
                     ),
                 ),
@@ -108,7 +107,7 @@ class ColabButtonAdder:
                         [
                             "from course.models import clear_cache",
                             "",
-                            'clear_cache("<path_to_cache>")',
+                            'clear_cache(CACHE_PATH)',
                         ]
                     ),
                 ),
