@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 
 def create_single_plot(
@@ -38,6 +38,56 @@ def create_single_plot(
             f"Failed to plot module stats with data_dict={data_dict}, x_label={x_label}, y_label={y_label}, title={title}"
         ) from e
 
+def create_comparison_plots(evaluation_results: Dict[str, List[Any]], title: str, x_label: str, y_label: str = "Value"):
+    """
+    Plot evaluation metrics for different model configurations.
+    Args:
+        evaluation_results (dict): Dictionary containing evaluation metrics for each model configuration
+        title (str): Title of the plot
+        x_label (str): Label for the x-axis
+        y_label (str): Label for the y-axis
+    """
+    # Get metrics names from the first result (all configs assumed same set of metrics)
+    first_result_list = next(iter(evaluation_results.values()))
+    metrics = [mr.name for mr in first_result_list]
+
+    # Prepare data dictionary {metric_name: {bits: value}}
+    data = {metric: {} for metric in metrics}
+
+    for bits, results in evaluation_results.items():
+        for mr in results:
+            data[mr.name][bits] = mr.result
+
+    # Calculate subplot grid size
+    n_metrics = len(metrics)
+    n_cols = 3
+    n_rows = (n_metrics + n_cols - 1) // n_cols  # ceiling division
+
+    # Create figure with subplots
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 5 * n_rows))
+    fig.suptitle(title, y=1.02)
+
+    # Flatten axes array to iterate easily
+    axes = axes.flatten()
+
+    # Plot each metric
+    for idx, metric in enumerate(metrics):
+        ax = axes[idx]
+        bits_list = list(data[metric].keys())
+        values = list(data[metric].values())
+
+        ax.bar(bits_list, values)
+        ax.set_title(metric)
+        ax.set_xlabel(x_label)
+        ax.set_ylabel(y_label)
+        ax.tick_params(axis="x", rotation=45)
+
+    # Hide unused subplots
+    for idx in range(len(metrics), len(axes)):
+        axes[idx].set_visible(False)
+
+    plt.tight_layout()
+    plt.show()
 
 def create_pareto_front(results: Dict[str, Dict[str, float]], metric1_name: str, metric2_name: str) -> None:
     """

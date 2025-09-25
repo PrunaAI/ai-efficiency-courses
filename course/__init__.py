@@ -13,8 +13,8 @@ from course.models import (
     clear_cache,
 )
 from course.slides import show_slides
-from course.plots import create_single_plot, create_pareto_front
-from course.evaluate import evaluate_model, evaluate_configs
+from course.plots import create_single_plot, create_comparison_plots, create_pareto_front
+from course.evaluate import evaluate_model
 
 __all__ = [
     "SMALL_MODEL_IDS",
@@ -25,6 +25,6 @@ __all__ = [
     "create_single_plot",
     "create_pareto_front",
     "evaluate_model",
-    "evaluate_configs",
     "clear_cache",
+    "create_comparison_plots",
 ]
