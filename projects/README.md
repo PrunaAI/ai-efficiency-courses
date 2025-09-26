@@ -14,7 +14,6 @@ Before you start, check the following pointers:
 
 - Publish your project **open-source and share** it with the community. We will be happy to reshare on socials!
 
-
 ## Pick your challenge
 
 > 💡 Use Pruna for any compression task
@@ -103,7 +102,7 @@ Build a deployment of an optimized AI model that runs efficiently on local, affo
 - Deployment: [Docker](https://docs.docker.com/get-started/), [FastAPI](https://fastapi.tiangolo.com/)
 - Consumer GPUs: RTX 3060/3070/3080/4060
 
-#### Example Use 
+#### Example Use Cases
 
 Unlocks creative, private, and low-latency applications without relying on expensive cloud services. Some possibilities include:
 
