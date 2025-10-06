@@ -11,7 +11,6 @@ requires-python = ">=3.10,<3.13"
 dependencies = [
     "pruna[full]==0.2.10",
     "pruna[gptq]==0.2.10",
-    "pruna_pro==0.2.9",
     "matplotlib",
     "jupyter>=1.1.1",
     "notebook>=6.0.0",
