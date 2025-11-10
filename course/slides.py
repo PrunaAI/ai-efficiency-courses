@@ -1,10 +1,10 @@
-from typing import List, Optional, Union
 from pathlib import Path
-from pydantic import BaseModel, Field, field_validator, ConfigDict
+from typing import List, Optional, Union
 
 import fitz  # PyMuPDF
 import gradio as gr
 from gradio_pdf import PDF
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class PDFSlideQuery(BaseModel):
@@ -41,8 +41,8 @@ class PDFSlideQuery(BaseModel):
         Raises:
             ValueError: If the file cannot be resolved or does not exist.
         """
-        from pathlib import Path
         import importlib.resources
+        from pathlib import Path
 
         path = Path(v)
         if path.is_absolute():
@@ -232,8 +232,8 @@ class PDFSlideViewer:
             None
         """
         try:
-            import tempfile
             import os
+            import tempfile
 
             # Create a temporary file to store the PDF bytes
             with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as temp_file:

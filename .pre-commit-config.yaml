@@ -3,7 +3,9 @@ repos:
     rev: v4.5.0
     hooks:
       - id: trailing-whitespace
+        exclude: '^(exercises/|solutions/)'
       - id: end-of-file-fixer
+        exclude: '^(exercises/|solutions/)'
       - id: check-yaml
       - id: check-added-large-files
       - id: check-merge-conflict
@@ -14,9 +16,9 @@ repos:
     hooks:
       - id: ruff
         args: [--fix]
-        exclude: ^exercises/
+        exclude: '^(exercises/|solutions/)'
       - id: ruff-format
-        exclude: ^exercises/
+        exclude: '^(exercises/|solutions/)'
 
   - repo: local
     hooks:

@@ -9,8 +9,7 @@ description = "AI Efficiency Courses with Pruna"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
 dependencies = [
-    "pruna[full,gptq,dev]==0.2.9",
-    "pruna_pro==0.2.9",
+    "pruna[full]==0.2.10",
     "matplotlib",
     "jupyter>=1.1.1",
     "notebook>=6.0.0",
@@ -39,7 +38,6 @@ packages = ["course", "slides"]
 py-modules = ["scripts.sync_notebooks", "scripts.add_colab_buttons"]
 
 [tool.uv]
-dev-dependencies = []
 extra-index-url = [
     "https://prunaai.pythonanywhere.com/",
 ]
