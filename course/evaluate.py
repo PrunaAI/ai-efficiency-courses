@@ -54,7 +54,7 @@ def evaluate_model(
         device = "cuda" if torch.cuda.is_available() else "cpu"
         model = AutoModelForCausalLM.from_pretrained(
             model_id_or_pruna_model,
-            dtype="auto",
+            torch_dtype="auto",
         )
         model = model.to(device)
         tokenizer_id_or_tokenizer = tokenizer_id_or_tokenizer or model_id_or_pruna_model
