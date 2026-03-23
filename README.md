@@ -30,7 +30,6 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | Language Model Architectures |  |
 |----------------------------|--|
 | 📊 [Slides](slides/01-language_model_architectures.pdf) | Learn about LLM building blocks and architectures |
-| 🎥 [Video](https://www.youtube.com) | Coming soon |
 | 💻 [Exercise](exercises/01-analyze_llm_architectures.ipynb) | Analyze LLM architectures |
 
 🎯 Learning Outcomes: In this chapter, you will learn what are the building blocks, variations, and recent advancements on language models.
@@ -46,7 +45,6 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | Compression of Language Models |  |
 |------------------------------|--|
 | 📊 [Slides](slides/02-compress_language_models.pdf) | Learn about model compression techniques |
-| 🎥 [Video](https://www.youtube.com) | Coming soon |
 | 💻 [Exercise](exercises/02-run_llm_cpu_vs_gpu.ipynb) | Run LLM on CPU vs GPU |
 
 🎯 Learning Outcomes: In this chapter, you will learn about the motivations and have an overview of model compression.
@@ -60,7 +58,6 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | Evaluation of Language Models |  |
 |-----------------------------|--|
 | 📊 [Slides](slides/03-evalaute_language_models.pdf) | Learn how to evaluate LLM efficiency |
-| 🎥 [Video](https://www.youtube.com) | Coming soon |
 | 💻 [Exercise](exercises/03-measure_llm_efficiency.ipynb) | Measure LLM efficiency |
 
 🎯 Learning Outcomes: In this chapter, you will learn how to evaluate the different efficiency aspects of language models.
@@ -75,7 +72,6 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | Quantization of Language Models |  |
 |--------------------------------|--|
 | 📊 [Slides](slides/04-quantize_language_models.pdf) | Learn about model quantization methods |
-| 🎥 [Video](https://www.youtube.com) | Coming soon |
 | 💻 [Exercise 1](exercises/04-benchmark_llm_quantization_methods.ipynb) | Benchmark LLM Quantization methods |
 | 💻 [Exercise 2](exercises/05-benchmark_llm_bits.ipynb) | Benchmark LLM bit precision |
 | 💻 [Exercise 3](exercises/06-use_data_llm_quantization.ipynb) | Use data during quantization |
@@ -91,7 +87,6 @@ A comprehensive learning path for building, compressing, evaluating, and deployi
 | Finetuning of Language Models |  |
 |------------------------------|--|
 | 📊 [Slides](slides/05-finetuning_for_llms.pdf) | Learn how to finetune models to improve or recover performance |
-| 🎥 [Video](https://www.youtube.com) | Coming soon |
 | 💻 [Exercise](exercises/07-finetune_llm.ipynb) | Finetune compressed models |
 
 🎯 Learning Outcomes: In this chapter, you will learn how to finetune models to improve or recover performance.
@@ -151,7 +146,6 @@ source $HOME/.cargo/env
 # Setup the project
 uv python install 3.10
 uv sync
-uv add pruna_pro==0.2.2.post1 --index-url https://prunaai.pythonanywhere.com/simple/
 
 # Activate the environment
 source .venv/bin/activate
