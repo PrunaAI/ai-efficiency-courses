@@ -67,14 +67,14 @@ def create_comparison_plots(
     # Calculate subplot grid size
     n_metrics = len(metrics)
     n_cols = 3
-    n_rows = (n_metrics + n_cols - 1) // n_cols  # ceiling division
+    n_rows = (n_metrics + n_cols - 1) // n_cols
 
     # Create figure with subplots
     fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 5 * n_rows))
     fig.suptitle(title, y=1.02)
 
     # Flatten axes array to iterate easily
-    axes = axes.flatten()
+    axes = axes.flatten() if n_metrics > 1 else [axes]
 
     # Plot each metric
     for idx, metric in enumerate(metrics):
@@ -87,6 +87,23 @@ def create_comparison_plots(
         ax.set_xlabel(x_label)
         ax.set_ylabel(y_label)
         ax.tick_params(axis="x", rotation=45)
+
+        # Adjust y-axis dynamically if differences are small
+        min_val = min(values)
+        max_val = max(values)
+        value_range = max_val - min_val
+
+        if value_range == 0:
+            padding = max(abs(max_val) * 0.05, 0.01)
+            ax.set_ylim(min_val - padding, max_val + padding)
+        else:
+            relative_range = value_range / max(abs(max_val), 1e-9)
+
+            if relative_range < 0.1:
+                padding = value_range * 0.2
+                ax.set_ylim(min_val - padding, max_val + padding)
+            else:
+                ax.set_ylim(0, max_val * 1.1)
 
     # Hide unused subplots
     for idx in range(len(metrics), len(axes)):

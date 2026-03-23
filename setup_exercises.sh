@@ -12,10 +12,6 @@ echo "Setting up AI Efficiency Courses with UV..."
 uv python install 3.10
 uv sync
 
-# Install pruna_pro from custom index
-echo "Installing pruna_pro from custom index..."
-uv add pruna_pro==0.2.2.post1 --index-url https://prunaai.pythonanywhere.com/simple/
-
 echo "Setup complete! Activate the environment with:"
 echo "source .venv/bin/activate"
 
